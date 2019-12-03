@@ -1,0 +1,81 @@
+class Program
+    {
+        static void Main(string[] args)
+        {
+            //Test2 t2 = new Test2();
+            VirClass1 vr = new VirClass1();
+            vr.test();
+            Console.ReadLine();
+        }
+    }
+
+    public class VirClass1
+    {
+        // since if i declare method virtual does not need to be override by child class
+        // if method is not override then it will call parent method 
+        // eg: VirClass1 vr = new OverClass1(); // this will call parent function
+        public virtual void test()
+        {
+            Console.WriteLine("virtual method called");
+        }
+    }
+
+    public class OverClass1 : VirClass1
+    {
+        // if i override the method then it will call override function
+        // if method is override then it will call child class method
+        // eg: VirClass1 vr = new OverClass1(); // this will call child function
+        // except when i create object of virtual method class it will call virtual method
+        public override void test()
+        {
+            Console.WriteLine("override method called");
+        }
+    }
+
+    public class newClass1 : VirClass1
+    {
+        // if i override the method then it will call override function
+        // if method is override then it will call child class method
+        // eg: VirClass1 vr = new OverClass1(); // this will call child function
+        // except when i create object of virtual method class it will call virtual method
+        public new void test()
+        {
+            Console.WriteLine("new method called");
+        }
+
+        new public void Test1()
+        {
+            Console.WriteLine("new method called");
+        }
+    }
+
+    public abstract class abs
+    {
+        //declare signature method when it is abstract
+        public abstract void ParentVirtual();
+    }
+
+    public class Inhe : abs
+    {
+        //compulsory to override this abstract method when inherited
+        public override void ParentVirtual()
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class Test1
+    {
+        public Test1()
+        {
+            Console.WriteLine("test 1 called");
+        }
+    }
+
+    public class Test2 : Test1
+    {
+        public Test2() 
+        {
+            Console.WriteLine("test 2 called");
+        }
+    }
